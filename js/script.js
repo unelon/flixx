@@ -7,8 +7,9 @@ const popularMoviesURL = "https://api.themoviedb.org/3/movie/popular?language=en
 const testURL = "https://api.themoviedb.org/3/movie/573435"
 
 // DOM Selectors
-const popularMovies = document.getElementById("popular-movies") 
+const popularMovies = document.getElementById("popular-movies");
 
+// Fetch popular movies
 const fetchPopularMovies = async () => {
     const res = await fetch(popularMoviesURL, {
         method: "GET",
@@ -19,29 +20,12 @@ const fetchPopularMovies = async () => {
     })
     const data = await res.json();
     const movies = data.results;
-
-    console.log(movies)
-
     renderMovieCard(popularMovies, movieCard, movies)  
+    console.log(movies)
 }
 
-const renderMovieCard = (domSelector, movieCard, data) => {
 
-    const newDomSelector = domSelector;
-    
-    newDomSelector.innerHTML = data.map(data => {
-            const title = movieCard(data);
-            console.log(data.title);
-
-            return (
-                `
-                <div>${title}</div>
-                `
-            )
-        }
-    ).join("");
-}
-
+// Movie Cards
 const movieCard = ({title, release_date}) => {
     return (
         `<div class="card">
@@ -61,6 +45,22 @@ const movieCard = ({title, release_date}) => {
         </div>`
     );
 }
+
+const renderMovieCard = (domSelector, movieCard, data) => {
+    const newDomSelector = domSelector;
+    newDomSelector.innerHTML = data.map(data => {
+            const title = movieCard(data);
+            console.log(data.title);
+
+            return (
+                `
+                <div>${title}</div>
+                `
+            )
+        }
+    ).join("");
+}
+
 
 // Highlight active link
 function highlightActiveLink() {
