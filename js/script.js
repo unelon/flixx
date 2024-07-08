@@ -1,8 +1,13 @@
 const apiToken = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlNTBiMTUxZGVmYzYyNzI2MDVjZWQxYTZjZDI5YjU3MiIsIm5iZiI6MTcyMDQzODU5NS4xNTA3MDksInN1YiI6IjY2OGJiMmRjMjk5ZGU2Zjk2ODNkMmU4YSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.RdZwp59vudKRBx8xzYKUtHpc97UDMtUfpr6r3lzHgio";
 const global = {currentPage: window.location.pathname}
 
+
+// Endpoints
 const popularMoviesURL = "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1";
 const testURL = "https://api.themoviedb.org/3/movie/573435"
+
+// DOM Selectors
+const popularMovies = document.getElementById("popular-movies") 
 
 const fetchPopularMovies = async () => {
     const res = await fetch(popularMoviesURL, {
@@ -12,15 +17,46 @@ const fetchPopularMovies = async () => {
             Authorization: "Bearer " + apiToken,
         }
     })
-    
     const data = await res.json();
+    const movies = data.results;
 
-    console.log(data)
+    renderMovieCard(popularMovies, movieCard, movies)  
+}
+
+const renderMovieCard = (domSelector, movieCard, data) => {
+
+    const newDomSelector = domSelector;
+    
+    newDomSelector.innerHTML = data.map(data => {
+            const title = movieCard(data.title);
+            console.log(data.title);
+
+            return (
+                `
+                <div>${title}</div>
+                `
+            )
+        }
+    ).join("");
 }
 
 const movieCard = (movie) => {
     return (
-        `<div>${movie.title}</div>`
+        `<div class="card">
+            <a href="movie-details.html?id=1">
+                <img
+                    src="images/no-image.jpg"
+                    class="card-img-top"
+                    alt="Movie Title"
+                />
+            </a>
+            <div class="card-body">
+                <h5 class="card-title">${movie}</h5>
+                <p class="card-text">
+                    <small class="text-muted">Release: XX/XX/XXXX</small>
+                </p>
+            </div>
+        </div>`
     );
 }
 
