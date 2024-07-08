@@ -20,6 +20,8 @@ const fetchPopularMovies = async () => {
     const data = await res.json();
     const movies = data.results;
 
+    console.log(movies)
+
     renderMovieCard(popularMovies, movieCard, movies)  
 }
 
@@ -28,7 +30,7 @@ const renderMovieCard = (domSelector, movieCard, data) => {
     const newDomSelector = domSelector;
     
     newDomSelector.innerHTML = data.map(data => {
-            const title = movieCard(data.title);
+            const title = movieCard(data);
             console.log(data.title);
 
             return (
@@ -40,7 +42,7 @@ const renderMovieCard = (domSelector, movieCard, data) => {
     ).join("");
 }
 
-const movieCard = (movie) => {
+const movieCard = ({title, release_date}) => {
     return (
         `<div class="card">
             <a href="movie-details.html?id=1">
@@ -51,9 +53,9 @@ const movieCard = (movie) => {
                 />
             </a>
             <div class="card-body">
-                <h5 class="card-title">${movie}</h5>
+                <h5 class="card-title">${title}</h5>
                 <p class="card-text">
-                    <small class="text-muted">Release: XX/XX/XXXX</small>
+                    <small class="text-muted">Release: ${release_date}</small>
                 </p>
             </div>
         </div>`
