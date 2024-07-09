@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/spinner.css" />
     <link rel="icon" href="data:,">
-    <script src="js/script.js" defer></script>
+    <script src="js/movie.js" defer></script>
     <title>Flixx | Movie Details</title>
   </head>
   <body>
@@ -50,13 +50,13 @@
             />
           </div>
           <div>
-            <h2>Movie Title</h2>
+            <h2 id="movie-title">Movie Title</h2>
             <p>
               <i class="fas fa-star text-primary"></i>
               8 / 10
             </p>
-            <p class="text-muted">Release Date: XX/XX/XXXX</p>
-            <p>
+            <p id="release-date" class="text-muted">Release Date: XX/XX/XXXX</p>
+            <p id="content">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores
               atque molestiae error debitis provident dolore hic odit, impedit
               sint, voluptatum consectetur assumenda expedita perferendis
@@ -66,7 +66,7 @@
               ipsam. Cumque omnis ad recusandae.
             </p>
             <h5>Genres</h5>
-            <ul class="list-group">
+            <ul id="genres" class="list-group">
               <li>Genre 1</li>
               <li>Genre 2</li>
               <li>Genre 3</li>
