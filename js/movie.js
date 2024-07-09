@@ -6,6 +6,7 @@ const searchParams = new URLSearchParams(myKeysValues);
 
 // DOM selectors
 const title = document.getElementById("movie-title");
+const rating = document.getElementById("rating");
 const releaseDate = document.getElementById("release-date");
 const content = document.getElementById("content");
 const genres = document.getElementById("genres");
@@ -23,8 +24,8 @@ const getMovie = async () => {
     }); 
     const data = await res.json();
 
-    // Multiple information
     showGenres(data.genres);
+    showRating(data.vote_average);
 
     // Single information
     title.innerHTML = data.title;
@@ -32,6 +33,7 @@ const getMovie = async () => {
     content.innerHTML = data.overview;
 }
 
+// Loop through genres
 const showGenres = (data) => {
     genres.innerHTML = data.map(data => {
          return ( 
@@ -40,6 +42,12 @@ const showGenres = (data) => {
             `
             )
     }).join("");
+}
+
+// Rating
+const showRating = (data) => {
+   rating.innerHTML = Math.floor(data);
+   console.log()
 }
 
 getMovie()
