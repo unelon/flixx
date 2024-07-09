@@ -10,9 +10,16 @@ const rating = document.getElementById("rating");
 const releaseDate = document.getElementById("release-date");
 const content = document.getElementById("content");
 const genres = document.getElementById("genres");
+const image = document.getElementById("image");
+const budget = document.getElementById("budget");
+const revenue = document.getElementById("revenue");
+const runtime = document.getElementById("runtime");
+const setStatus = document.getElementById("status");
 
 const paramId = searchParams.get("id");
-const movieId = "https://api.themoviedb.org/3/movie/" + paramId;
+const movieUrl = "https://api.themoviedb.org/3/movie";
+const movieId = movieUrl + "/" + paramId;
+const imgBaseUrl = "https://image.tmdb.org/t/p/w500";
 
 const getMovie = async () => {
     const res = await fetch(movieId,{
@@ -23,6 +30,8 @@ const getMovie = async () => {
         }
     }); 
     const data = await res.json();
+    const movieImg = imgBaseUrl + data.poster_path;
+    console.log(movieImg);
 
     showGenres(data.genres);
     showRating(data.vote_average);
@@ -31,6 +40,11 @@ const getMovie = async () => {
     title.innerHTML = data.title;
     releaseDate.innerHTML = data.release_date;
     content.innerHTML = data.overview;
+    image.src = movieImg;
+    budget.innerHTML = data.budget;
+    revenue.innerHTML = data.revenue;
+    runtime.innerHTML = data.runtime;
+    setStatus.innerHTML = data.status;
 }
 
 // Loop through genres
@@ -50,8 +64,4 @@ const showRating = (data) => {
    console.log()
 }
 
-getMovie()
-
-
-
-
+getMovie();
