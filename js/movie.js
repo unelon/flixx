@@ -33,7 +33,7 @@ const getMovie = async () => {
     }); 
     const data = await res.json();
     const movieImg = imgBaseUrl + data.poster_path;
-    console.log(data);
+    
     showGenres(data.genres);
     showRating(data.vote_average)
     showCompanies(data.production_companies)
