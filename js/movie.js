@@ -15,6 +15,8 @@ const budget = document.getElementById("budget");
 const revenue = document.getElementById("revenue");
 const runtime = document.getElementById("runtime");
 const setStatus = document.getElementById("status");
+const companies = document.getElementById("companies");
+const homepage = document.getElementById("homepage");
 
 const paramId = searchParams.get("id");
 const movieUrl = "https://api.themoviedb.org/3/movie";
@@ -31,10 +33,10 @@ const getMovie = async () => {
     }); 
     const data = await res.json();
     const movieImg = imgBaseUrl + data.poster_path;
-    console.log(movieImg);
-
+    console.log(data);
     showGenres(data.genres);
-    showRating(data.vote_average);
+    showRating(data.vote_average)
+    showCompanies(data.production_companies)
 
     // Single information
     title.innerHTML = data.title;
@@ -54,6 +56,19 @@ const showGenres = (data) => {
             `
                 <li>${data.name}</li>
             `
+            )
+    }).join("");
+}
+
+
+// Loop through companies
+const showCompanies = (data) => {
+    companies.innerHTML = data.map(data => {
+         return ( 
+            `
+            <li style="display: flex; justify-content: space-between; width: 100%;">
+                <div>${data.name}</div>
+            </li>            `
             )
     }).join("");
 }

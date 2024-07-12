@@ -25,8 +25,7 @@ a {
 }
 
 ul {
-  list-style:square;
-  margin-left: 12px;
+  list-style:none;
 }
 
 .text-primary {

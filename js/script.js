@@ -22,7 +22,6 @@ const fetchPopularMovies = async () => {
     const data = await res.json();
     const movies = data.results;
     renderMovieCard(popularMovies, movieCard, movies)  
-    console.log(movies)
 }
 
 
@@ -52,7 +51,6 @@ const renderMovieCard = (domSelector, movieCard, data) => {
     const newDomSelector = domSelector;
     newDomSelector.innerHTML = data.map(data => {
             const title = movieCard(data);
-            console.log(data.title);
 
             return (
                 `
@@ -88,15 +86,13 @@ function init() {
             break;
         case "/tv-details.html":
             console.log("TV Details");
-            break;
-        case "/search.html":
-            console.log("Search");
+            break;console.log("")("Search");
             break;
     }
 
-    highlightActiveLink()
+    highlightActiveLink();
+    fetchPopularMovies();
 }
 
-document.addEventListener("DOMContentLoaded", init)
+document.addEventListener("DOMContentLoaded", init);
 
-fetchPopularMovies()
