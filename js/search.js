@@ -7,6 +7,15 @@ const apiToken = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlNTBiMTUxZGVmYzYyNzI2MDVjZWQxY
 // DOM Selectors
 
 const movieResults = document.getElementById("search-results");
+movieResults.innerHTML = `
+    <div style="width: 100%; height: 500px; background-color: #041628; color: #fff; text-align:center; display: flex; align-items: center; justify-content: center"> 
+        <div>
+            <img src="../images/film.gif" />    
+            <div style="margin-top: 4px">Fetching movies</div>
+        </div>
+    </div>
+`
+
 console.log(movieResults)
 
 const search = async () => {

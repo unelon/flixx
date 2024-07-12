@@ -124,6 +124,9 @@ ul {
 .card {
   background: #04376b;
   padding: 5px;
+  height: 490px;
+  overflow: hidden;
+  max-width: 275px;
 }
 
 .card img {
@@ -133,6 +136,11 @@ ul {
 .card-body {
   padding: 10px;
   font-size: 20px;
+}
+
+.card-title {
+  height: 20px;
+  overflow: hidden;
 }
 
 .card:hover {
