@@ -1,3 +1,5 @@
+import { renderActorCard } from './renderActorCard.js';
+
 const apiToken = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlNTBiMTUxZGVmYzYyNzI2MDVjZWQxYTZjZDI5YjU3MiIsIm5iZiI6MTcyMDQzODU5NS4xNTA3MDksInN1YiI6IjY2OGJiMmRjMjk5ZGU2Zjk2ODNkMmU4YSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.RdZwp59vudKRBx8xzYKUtHpc97UDMtUfpr6r3lzHgio";
 
 // Single Movie page
@@ -18,6 +20,7 @@ const setStatus = document.getElementById("status");
 const companies = document.getElementById("companies");
 const homepage = document.getElementById("homepage");
 const movieTrailer = document.getElementById("trailer")
+const actors = document.getElementById("actors")
 
 const paramId = searchParams.get("id");
 const movieUrl = "https://api.themoviedb.org/3/movie";
@@ -51,7 +54,6 @@ const getMovie = async () => {
     revenue.innerText = data.revenue;
     runtime.innerText = data.runtime;
     setStatus.innerText = data.status;
-    console.log(data.budget)
     }   
     catch (error) {
     console.error("Error fetching movie data:", error);
@@ -70,11 +72,29 @@ const getMovie = async () => {
         const data = await res.json();
         const youtubeEmbedUrl = "https://www.youtube.com/embed/";
         const trailer = data.results.find(video => video.type === "Trailer" && video.site === 'YouTube').key;
-        console.log(trailer)
 
         movieTrailer.src = youtubeEmbedUrl + trailer
 
     } catch (error) {console.error("Error fetching videos")}
+
+    // Get actors
+    try {
+        const res = await fetch(movieId + "/credits",{
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + apiToken,
+            }
+        }); 
+
+        const data = await res.json();
+        const cast = data.cast;
+        console.log(cast)
+        renderActorCard(actors, cast, imgBaseUrl)
+      
+
+    } catch (error) {console.error("Error fetching videos")}
+
 }
 
 // Loop through genres
@@ -104,7 +124,6 @@ const showCompanies = (data) => {
 // Rating
 const showRating = (data) => {
    rating.innerHTML = Math.floor(data);
-   console.log()
 }
 
   
