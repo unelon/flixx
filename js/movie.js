@@ -44,13 +44,13 @@ const getMovie = async () => {
 
     // Single information
     image.src = movieImg;
-    title.innerHTML = data.title;
-    releaseDate.innerHTML = data.release_date;
-    content.innerHTML = data.overview;
-    budget.innerHTML = data.budget;
-    revenue.innerHTML = data.revenue;
-    runtime.innerHTML = data.runtime;
-    setStatus.innerHTML = data.status;
+    title.innerText = data.title;
+    releaseDate.innerText = data.release_date;
+    content.innerText = data.overview;
+    budget.innerText = data.budget;
+    revenue.innerText = data.revenue;
+    runtime.innerText = data.runtime;
+    setStatus.innerText = data.status;
     console.log(data.budget)
     }   
     catch (error) {
