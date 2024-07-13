@@ -31,7 +31,11 @@ const search = async () => {
     
     const data = await res.json();
 
-    const filteredResults = data.results.filter(movie => movie.original_title.toLowerCase().includes(query.toLowerCase()))
+    const filteredResults = data.results.filter(movie => {
+    const regex = new RegExp(query.replace(/\s+/g, '').replace(/[-_]/g, ''), 'i');
+    return regex.test(movie.original_title.replace(/\s+/g, '').replace(/[-_]/g, ''));
+});
+
     renderMovieCard(movieResults, filteredResults);
 }
 

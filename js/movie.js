@@ -17,6 +17,7 @@ const runtime = document.getElementById("runtime");
 const setStatus = document.getElementById("status");
 const companies = document.getElementById("companies");
 const homepage = document.getElementById("homepage");
+const movieTrailer = document.getElementById("trailer")
 
 const paramId = searchParams.get("id");
 const movieUrl = "https://api.themoviedb.org/3/movie";
@@ -24,6 +25,9 @@ const movieId = movieUrl + "/" + paramId;
 const imgBaseUrl = "https://image.tmdb.org/t/p/w500";
 
 const getMovie = async () => {
+
+    // Get movie
+    try {
     const res = await fetch(movieId,{
         method: "GET",
         headers: {
@@ -39,14 +43,38 @@ const getMovie = async () => {
     showCompanies(data.production_companies)
 
     // Single information
+    image.src = movieImg;
     title.innerHTML = data.title;
     releaseDate.innerHTML = data.release_date;
     content.innerHTML = data.overview;
-    image.src = movieImg;
     budget.innerHTML = data.budget;
     revenue.innerHTML = data.revenue;
     runtime.innerHTML = data.runtime;
     setStatus.innerHTML = data.status;
+    console.log(data.budget)
+    }   
+    catch (error) {
+    console.error("Error fetching movie data:", error);
+    }
+
+    // Get trailer
+    try {
+        const res = await fetch(movieId + "/videos",{
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + apiToken,
+            }
+        }); 
+
+        const data = await res.json();
+        const youtubeEmbedUrl = "https://www.youtube.com/embed/";
+        const trailer = data.results.find(video => video.type === "Trailer" && video.site === 'YouTube').key;
+        console.log(trailer)
+
+        movieTrailer.src = youtubeEmbedUrl + trailer
+
+    } catch (error) {console.error("Error fetching videos")}
 }
 
 // Loop through genres
@@ -78,5 +106,9 @@ const showRating = (data) => {
    rating.innerHTML = Math.floor(data);
    console.log()
 }
+
+  
+
+
 
 getMovie();

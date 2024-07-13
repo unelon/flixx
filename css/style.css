@@ -256,6 +256,14 @@ section h2 {
   border-color: rgba(255, 255, 255, 0.1);
 }
 
+.movie-short-info {
+  margin-top: 40px;
+}
+
+#trailer {
+  border: 1px solid black;
+}
+
 /* Search */
 .search {
   padding: 60px;
