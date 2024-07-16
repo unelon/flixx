@@ -6,7 +6,7 @@ const apiToken = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlNTBiMTUxZGVmYzYyNzI2MDVjZWQxY
 const global = {currentPage: window.location.pathname}
 
 // Endpoints
-const popularMoviesURL = "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1";
+const popularMoviesURL = "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1?language=da-DK&page=1";
 const testURL = "https://api.themoviedb.org/3/movie/573435"
 
 // DOM Selectors
