@@ -7,7 +7,7 @@ export const renderActorCard = (domSelector, data, endpoint) => {
             <div class="swiper-slide">
                 <div class="actor">
                 <div class="swiper-image-container">
-                    <a href="movie-details.html?id=${id}">
+                    <a href="profile-details.html?id=${id}">
                         <img
                             src="${profileUrl}"
                             class="card-img-top"
@@ -58,7 +58,6 @@ export const renderActorCard = (domSelector, data, endpoint) => {
             1160: {
               slidesPerView: 8,
               spaceBetween: 20,
-              allowSlidePrev: false,
             },
         }
 
