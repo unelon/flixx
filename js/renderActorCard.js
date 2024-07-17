@@ -5,7 +5,8 @@ export const renderActorCard = (domSelector, data, endpoint) => {
         return (
             `   
             <div class="swiper-slide">
-                <div class=" actor">
+                <div class="actor">
+                <div class="swiper-image-container">
                     <a href="movie-details.html?id=${id}">
                         <img
                             src="${profileUrl}"
@@ -13,6 +14,7 @@ export const renderActorCard = (domSelector, data, endpoint) => {
                             alt="${name}"
                         />
                     </a>
+                </div>
                     <div class="card-body">
                         <h5 class="card-title">${name}</h5>
                         <h5 class="card-title">${character}</h5>
@@ -28,14 +30,38 @@ export const renderActorCard = (domSelector, data, endpoint) => {
 
     const swiper = new Swiper('.swiper', {
         direction: 'horizontal',
-        loop: true,
-        slidesPerView: 4,
+        slidesPerView: 2,
+        spaceBetween: 10,
       
         // Navigation arrows
         navigation: {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev',
         },
+
+        breakpoints: {
+            // when window width is >= 320px (Mobile)
+      
+            300: {
+                slidesPerView: 6,
+                spaceBetween: 20,
+              },
+           800: {
+                slidesPerView: 6,
+                spaceBetween: 20,
+              },
+            1080: {
+                slidesPerView: 7,
+                spaceBetween: 20,
+              },
+            // when window width is >= 1240px (Desktop)
+            1160: {
+              slidesPerView: 8,
+              spaceBetween: 20,
+              allowSlidePrev: false,
+            },
+        }
+
       
     });    
 }
