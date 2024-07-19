@@ -16,8 +16,8 @@ export const renderActorCard = (domSelector, data, endpoint) => {
                     </a>
                 </div>
                     <div class="card-body">
-                        <h5 class="card-title">${name}</h5>
-                        <h5 class="card-title">${character}</h5>
+                        <h5 class="card-title" style="font-size: 12px">${name}</h5>
+                        <p class="card-title" style="font-size: 12px">${character}</p>
                     </div>
                 </div>
             </div>

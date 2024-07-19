@@ -17,13 +17,17 @@ const runtime = document.getElementById("runtime");
 const setStatus = document.getElementById("status");
 const companies = document.getElementById("companies");
 const homepage = document.getElementById("homepage");
-const movieTrailer = document.getElementById("trailer")
-const actors = document.getElementById("actors")
+const movieTrailer = document.getElementById("trailer");
+const actors = document.getElementById("actors");
+const body = document.body;
 
 const paramId = searchParams.get("id");
 const movieUrl = "https://api.themoviedb.org/3/movie";
 const movieId = movieUrl + "/" + paramId;
 const imgBaseUrl = "https://image.tmdb.org/t/p/w500";
+const imageBaseUrlOriginal = "https://image.tmdb.org/t/p/original";
+
+
 
 const getMovie = async () => {
 
@@ -36,12 +40,17 @@ const getMovie = async () => {
             Authorization: "Bearer " + apiToken,
         }
     }); 
+
     const data = await res.json();
     const movieImg = imgBaseUrl + data.poster_path;
+    console.log(data)
     
     showGenres(data.genres);
     showRating(data.vote_average)
     showCompanies(data.production_companies)
+
+    // backdrop image
+    const backdrop = imageBaseUrlOriginal + data.backdrop_path
 
     // Single information
     image.src = movieImg;
@@ -50,6 +59,7 @@ const getMovie = async () => {
     content.innerText = data.overview;
     runtime.innerText = data.runtime;
     setStatus.innerText = data.status;
+    body.style.backgroundImage = `url(${backdrop})`;
     }   
     catch (error) {
     console.error("Error fetching movie data:", error);
