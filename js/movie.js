@@ -13,8 +13,6 @@ const releaseDate = document.getElementById("release-date");
 const content = document.getElementById("content");
 const genres = document.getElementById("genres");
 const image = document.getElementById("image");
-const budget = document.getElementById("budget");
-const revenue = document.getElementById("revenue");
 const runtime = document.getElementById("runtime");
 const setStatus = document.getElementById("status");
 const companies = document.getElementById("companies");
@@ -50,8 +48,6 @@ const getMovie = async () => {
     title.innerText = data.title;
     releaseDate.innerText = data.release_date;
     content.innerText = data.overview;
-    budget.innerText = data.budget;
-    revenue.innerText = data.revenue;
     runtime.innerText = data.runtime;
     setStatus.innerText = data.status;
     }   
