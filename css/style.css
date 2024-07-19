@@ -123,6 +123,11 @@ ul {
   height: 490px;
   overflow: hidden;
   max-width: 275px;
+  border-radius: 8px;
+}
+
+.card-img-top {
+  border-radius: 8px;
 }
 
 .card img {
@@ -310,15 +315,26 @@ section h2 {
   background-size: contain;
 }
 
+
 .page-container  {
   background: rgb(2,13,24);
   background: linear-gradient(0deg, rgba(2,13,24,1) 65%, rgba(2, 13, 24, 0.567) 100%);
 }
 
 /* Search */
+.search-form {
+  background: rgb(2,13,24);
+  background: linear-gradient(0deg, rgba(2,13,24,1) 66%, rgba(2,13,24,0.5004202364539565) 100%);
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 8px;
+}
+
 .search {
   padding: 60px;
-  margin-bottom: 40px;
+  padding-bottom: 10px;
 }
 
 .search .container {

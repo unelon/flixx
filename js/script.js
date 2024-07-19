@@ -7,10 +7,11 @@ const global = {currentPage: window.location.pathname}
 
 // Endpoints
 const popularMoviesURL = "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1?language=da-DK&page=1";
-const testURL = "https://api.themoviedb.org/3/movie/573435"
+const imageBaseUrlOriginal = "https://image.tmdb.org/t/p/original";
 
 // DOM Selectors
 const popularMovies = document.getElementById("popular-movies");
+const body = document.body;
 
 // Fetch popular movies
 const fetchPopularMovies = async () => {
@@ -23,6 +24,9 @@ const fetchPopularMovies = async () => {
     })
     const data = await res.json();
     const movies = data.results;
+    const backdrop = imageBaseUrlOriginal + data.results[Math.floor(Math.random() * 20)].backdrop_path
+    body.style.backgroundImage = `url(${backdrop})`;
+    console.log(movies)
     renderMovieCard(popularMovies, movies)  
 }
 
