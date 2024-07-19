@@ -150,11 +150,9 @@ ul {
   background: #0a4b8f;
 }
 
-/* Card actor */
-.actor {
-
+.text-muted {
+  font-size: 12px;
 }
-
 
 /* Footer */
 .main-footer {
