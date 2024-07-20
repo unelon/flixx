@@ -31,6 +31,7 @@ const getProfile = async () => {
         })
 
         const data = await res.json();
+        console.log(data)
 
         title.innerText = data.name;
         if (data.biography !== "") {
@@ -58,10 +59,7 @@ const getProfile = async () => {
         })
 
         const data = await res.json();
-        console.log("actormovies:",  data)
         renderMovieSmallCard(movies, data.cast)
-        
-      
         
     } catch (error) {
         
