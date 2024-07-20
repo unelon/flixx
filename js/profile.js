@@ -4,6 +4,9 @@ const personId = new URLSearchParams(window.location.search).get('id');
 const profileUrl = `https://api.themoviedb.org/3/person/${personId}`;
 const imageUrl = `https://image.tmdb.org/t/p/w500/`;
 const imdbProfileUrl = "https://www.imdb.com/name/";
+const actorMoviesUrl = `https://api.themoviedb.org/3/person/${personId}/movie_credits`
+
+console.log(actorMoviesUrl)
 
 // DOM selectors
 const title = document.getElementById("profile-title");
@@ -43,6 +46,18 @@ const getProfile = async () => {
         
     }
 
+    try {
+        const res = await fetch(actorMoviesUrl, {
+            method: "GET",
+            headers: {
+                "content-type": "application/json",
+                Authorization: "Bearer " + apiToken,
+            }
+        })
+        
+    } catch (error) {
+        
+    }
 }
 
 getProfile()
