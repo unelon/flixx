@@ -453,7 +453,7 @@ section h2 {
     margin-bottom: 20px;
   }
   .movie-bg {
-    background-size: cover;
+    background-image: none !important;
   }
 }
 
