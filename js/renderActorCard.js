@@ -39,14 +39,24 @@ export const renderActorCard = (domSelector, data, endpoint) => {
           prevEl: '.swiper-button-prev',
         },
 
-        breakpoints: {
-            // when window width is >= 320px (Mobile)
-      
-            300: {
-                slidesPerView: 6,
+        breakpoints: {  
+            0: {
+                slidesPerView: 1,
+                spaceBetween: 0
+            }, 
+            250: {
+                slidesPerView: 2,
+                spaceBetween: 8
+            }, 
+              400: {
+                slidesPerView: 3,
                 spaceBetween: 20,
               },
-           800: {
+              500: {
+                slidesPerView: 4,
+                spaceBetween: 20,
+              },
+           700: {
                 slidesPerView: 6,
                 spaceBetween: 20,
               },
@@ -54,7 +64,6 @@ export const renderActorCard = (domSelector, data, endpoint) => {
                 slidesPerView: 7,
                 spaceBetween: 20,
               },
-            // when window width is >= 1240px (Desktop)
             1160: {
               slidesPerView: 8,
               spaceBetween: 20,

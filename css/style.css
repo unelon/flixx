@@ -442,3 +442,25 @@ section h2 {
   text-align: left !important;
 }
 
+/* Responsive */
+@media (max-width: 960px) {
+  .details-top {
+    flex-direction: column;
+  }
+  .details-top img {
+    margin-right: 0;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .movie-bg {
+    background-size: cover;
+  }
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  #trailer {
+    height: 300px !important;
+  }
+  
+}
