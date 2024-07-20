@@ -1,3 +1,5 @@
+import { renderMovieSmallCard } from "./renderMovieSmallCard.js";
+
 const apiToken = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlNTBiMTUxZGVmYzYyNzI2MDVjZWQxYTZjZDI5YjU3MiIsIm5iZiI6MTcyMDQzODU5NS4xNTA3MDksInN1YiI6IjY2OGJiMmRjMjk5ZGU2Zjk2ODNkMmU4YSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.RdZwp59vudKRBx8xzYKUtHpc97UDMtUfpr6r3lzHgio";
 const personId = new URLSearchParams(window.location.search).get('id');
 
@@ -15,6 +17,7 @@ const profileImg = document.getElementById("image");
 const birthday = document.getElementById("birthday");
 const birthplace = document.getElementById("birthplace");
 const imdbProfile = document.getElementById("imdbProfile");
+const movies = document.getElementById("movies");
 
 const getProfile = async () => {
 
@@ -28,7 +31,6 @@ const getProfile = async () => {
         })
 
         const data = await res.json();
-        console.log(data)
 
         title.innerText = data.name;
         if (data.biography !== "") {
@@ -54,6 +56,12 @@ const getProfile = async () => {
                 Authorization: "Bearer " + apiToken,
             }
         })
+
+        const data = await res.json();
+        console.log("actormovies:",  data)
+        renderMovieSmallCard(movies, data.cast)
+        
+      
         
     } catch (error) {
         
