@@ -1,5 +1,7 @@
 export const renderMovieSmallCard = (domSelector, data) => {
 
+    const movieUrl = "https://api.themoviedb.org/3/movie/";
+
     const movieCard = ({ title, release_date, poster_path, id }) => {
         
         const posterUrl = poster_path 
@@ -10,7 +12,7 @@ export const renderMovieSmallCard = (domSelector, data) => {
                 `   
                     <div class="actor">
                         <div class="swiper-image-container">
-                            <a href="profile-details.html?id=${id}">
+                            <a href="movie-details.html?id=${id}">
                                 <img
                                     src="${posterUrl}"
                                     class="card-img-top"
