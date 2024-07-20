@@ -464,3 +464,35 @@ section h2 {
   }
   
 }
+
+
+/* Responsive */
+@media (max-width: 575px) {
+  #popular-movies .card {
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+  }
+  .search {padding: 0;}
+  .search-flex {
+    flex-direction: column;
+  }
+  .search .container form input[type='text'] {
+    margin-right: 0;
+    margin-bottom: 4px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  .search .container h1 {
+    font-size: 1.5rem !important;
+  }
+  .search-form {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .search .container {
+    padding-bottom: 0;
+  }
+  
+}
+

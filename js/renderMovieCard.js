@@ -7,8 +7,9 @@ export const renderMovieCard = (domSelector, data) => {
             : 'images/no-image.jpg';
 
             return (
-                `   <div class="card">
-                        <a href="movie-details.html?id=${id}">
+            `   
+                <div class="card">
+                    <a href="movie-details.html?id=${id}">
                         <img
                             src="${posterUrl}"
                             class="card-img-top"
@@ -35,7 +36,7 @@ export const renderMovieCard = (domSelector, data) => {
             if (data.poster_path) {
                 return (
                     `
-                    <div>${movie}</div>
+                    ${movie}
                     `
                 )
             }
