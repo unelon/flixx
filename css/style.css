@@ -91,6 +91,9 @@ ul {
   font-size: 25px;
   font-weight: 700;
   text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  margin-top: -8px;
 }
 
 .main-header ul {
