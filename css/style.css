@@ -128,6 +128,8 @@ ul {
   overflow: hidden;
   max-width: 275px;
   border-radius: 8px;
+  transform: scale(1);
+  transition: all 0.2s ease-in-out;
 }
 
 .card-img-top {
