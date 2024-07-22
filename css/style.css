@@ -9,6 +9,7 @@
 :root {
   --color-primary: #020d18;
   --color-secondary: #f1c40f;
+  --color-third: #093562;
 }
 
 body {
@@ -135,6 +136,7 @@ ul {
 
 .card img {
   width: 100%;
+  min-height: 397px;
 }
 
 .card-body {
@@ -155,6 +157,24 @@ ul {
 
 .text-muted {
   font-size: 12px;
+}
+
+.card-label {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  border: 2px solid #093562;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 12px;
+}
+
+.card-label-movie {
+  background-color: var(--color-primary);
+}
+
+.card-label-tv {
+  background-color: var(--color-third);
 }
 
 /* Footer */

@@ -10,11 +10,14 @@ export const renderTvCard = (domSelector, data) => {
             `   
                 <div class="card">
                     <a href="movie-details.html?id=${id}">
-                        <img
-                            src="${posterUrl}"
-                            class="card-img-top"
-                            alt="${name}"
-                        />
+                        <div style="position: relative">
+                            <img
+                                src="${posterUrl}"
+                                class="card-img-top"
+                                alt="${name}"
+                            />
+                            <div class="card-label card-label-tv">TV Show</div>
+                        </div>
                     </a>
                     <div class="card-body">
                         <h5 class="card-title">${name}</h5>
