@@ -9,16 +9,16 @@ export const renderMovieCard = (domSelector, data) => {
             return (
             `   
                 <div class="card">
-                    <div style="position: relative">
-                        <a href="movie-details.html?id=${id}">
-                        <img
-                            src="${posterUrl}"
-                            class="card-img-top"
-                            alt="${title}"
-                        />
-                        <div class="card-label card-label-movie">Movie</div>
-                        </a>
-                    </div>
+                    <a href="movie-details.html?id=${id}">
+                        <div style="position: relative">
+                            <img
+                                src="${posterUrl}"
+                                class="card-img-top"
+                                alt="${title}"
+                            />
+                            <div class="card-label card-label-movie">Movie</div>
+                        </div>
+                    </a>
                     <div class="card-body">
                         <h5 class="card-title">${title}</h5>
                         <p class="card-text">

@@ -9,7 +9,7 @@ export const renderTvCard = (domSelector, data) => {
             return (
             `   
                 <div class="card">
-                    <a href="movie-details.html?id=${id}">
+                    <a href="tv-details.html?id=${id}">
                         <div style="position: relative">
                             <img
                                 src="${posterUrl}"

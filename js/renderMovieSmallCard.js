@@ -12,7 +12,7 @@ export const renderMovieSmallCard = (domSelector, data) => {
                 `   
                     <div class="actor">
                         <div class="swiper-image-container">
-                            <a href="movie-details.html?id=${id}">
+                            <a href="tv-details.html?id=${id}">
                                 <img
                                     src="${posterUrl}"
                                     class="card-img-top"
