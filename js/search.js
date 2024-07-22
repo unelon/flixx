@@ -1,4 +1,5 @@
 import { renderMovieCard } from './renderMovieCard.js';
+import { renderTvCard } from './renderTvCard.js';
 
 const myKeysValues = window.location.search;
 const searchParams = new URLSearchParams(myKeysValues);
@@ -18,7 +19,7 @@ movieResults.innerHTML = `
 
 console.log(movieResults)
 
-const search = async () => {
+const searchMovie = async () => {
     const query = searchParams.get('search-term');
     const searchMovies = `https://api.themoviedb.org/3/search/movie?query=${query}`;
     
@@ -30,6 +31,8 @@ const search = async () => {
     });
     
     const data = await res.json();
+    console.log(data)
+
 
     const filteredResults = data.results.filter(movie => {
     const regex = new RegExp(query.replace(/\s+/g, '').replace(/[-_]/g, ''), 'i');
@@ -39,4 +42,41 @@ const search = async () => {
     renderMovieCard(movieResults, filteredResults);
 }
 
-search();
+const searchTv = async () => {
+    const query = searchParams.get('search-term');
+    const searchMovies = `https://api.themoviedb.org/3/search/tv?query=${query}`;
+    
+    const res = await fetch(searchMovies, {
+        method: "GET",
+        headers: {
+            "Authorization": "Bearer " + apiToken,
+        }
+    });
+    
+    const data = await res.json();
+    console.log(data)
+
+    const filteredResults = data.results.filter(tv => {
+    const regex = new RegExp(query.replace(/\s+/g, '').replace(/[-_]/g, ''), 'i');
+    return regex.test(tv.original_name.replace(/\s+/g, '').replace(/[-_]/g, ''));
+});
+
+    renderTvCard(movieResults, filteredResults);
+}
+
+console.log(searchParams.get("type"))
+
+const type = searchParams.get("type")
+
+switch (type) {
+    case 'movie':
+        searchMovie();
+        break;
+    case 'tv':
+        searchTv();
+        break;
+    default:
+      searchMovie();
+  }  
+  
+
