@@ -79,9 +79,13 @@ const getMovie = async () => {
         const youtubeEmbedUrl = "https://www.youtube.com/embed/";
         const trailer = data.results.find(video => video.type === "Trailer" && video.site === 'YouTube').key;
 
-        movieTrailer.src = youtubeEmbedUrl + trailer
+   
+        movieTrailer.src = youtubeEmbedUrl + trailer;        
 
-    } catch (error) {console.error("Error fetching videos")}
+    } catch (error) {
+        console.error("Error fetching videos");
+        movieTrailer.style.display = "none"   
+    }
 
     // Get actors
     try {
