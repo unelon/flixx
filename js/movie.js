@@ -1,4 +1,5 @@
 import { renderActorCard } from './renderActorCard.js';
+import { renderMovieSmallCard } from "./renderMovieSmallCard.js";
 
 const apiToken = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlNTBiMTUxZGVmYzYyNzI2MDVjZWQxYTZjZDI5YjU3MiIsIm5iZiI6MTcyMDQzODU5NS4xNTA3MDksInN1YiI6IjY2OGJiMmRjMjk5ZGU2Zjk2ODNkMmU4YSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.RdZwp59vudKRBx8xzYKUtHpc97UDMtUfpr6r3lzHgio";
 
@@ -19,6 +20,7 @@ const companies = document.getElementById("companies");
 const homepage = document.getElementById("homepage");
 const movieTrailer = document.getElementById("trailer");
 const actors = document.getElementById("actors");
+const similarMovies = document.getElementById("similar-movies");
 const body = document.body;
 
 const paramId = searchParams.get("id");
@@ -43,7 +45,6 @@ const getMovie = async () => {
 
     const data = await res.json();
     const movieImg = imgBaseUrl + data.poster_path;
-    console.log(data)
     
     showGenres(data.genres);
     showRating(data.vote_average)
@@ -95,8 +96,24 @@ const getMovie = async () => {
 
         const data = await res.json();
         const cast = data.cast;
-        console.log(cast)
         renderActorCard(actors, cast, imgBaseUrl)
+      
+
+    } catch (error) {console.error("Error fetching videos")}
+
+    // Get similar movies
+    try {
+        const res = await fetch(movieId + "/similar",{
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + apiToken,
+            }
+        }); 
+
+        const data = await res.json();
+        console.log(data)
+        renderMovieSmallCard(similarMovies, data.results)
       
 
     } catch (error) {console.error("Error fetching videos")}
