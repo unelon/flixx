@@ -256,11 +256,14 @@ section h2 {
 }
 
 .swiper-button-prev, .swiper-button-next {
-  top: 40%;
   width: 40px;
   height: 40px;
   background-color: #000;
   border-radius: 200px;
+}
+
+.actors-wrapper .swiper-button-prev, .actors-wrapper .swiper-button-next {
+  top: 40%;
 }
 
 .swiper-button-prev {
