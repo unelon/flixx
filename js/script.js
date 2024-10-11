@@ -73,13 +73,6 @@ function init() {
             console.log("TV Shows");
             fetchPopularTvShows();
             break;
-        case "/movie-details.html":
-            console.log("Movie Details");
-            break;
-        case "/tv-details.html":
-            console.log("TV Details");
-            break;console.log("")("Search");
-            break;
     }
 
     highlightActiveLink();
