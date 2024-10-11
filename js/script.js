@@ -1,11 +1,11 @@
-import { renderMovieCard } from './renderMovieCard.js';
+//import { renderMovieCard } from './renderMovieCard.js';
+import { renderMovieCard } from '../dist/renderMovieCard.js'
 import { renderTvCard } from './renderTvCard.js';
 
 const apiToken = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlNTBiMTUxZGVmYzYyNzI2MDVjZWQxYTZjZDI5YjU3MiIsIm5iZiI6MTcyMDQzODU5NS4xNTA3MDksInN1YiI6IjY2OGJiMmRjMjk5ZGU2Zjk2ODNkMmU4YSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.RdZwp59vudKRBx8xzYKUtHpc97UDMtUfpr6r3lzHgio";
 
 // Get current Page
 const global = {currentPage: window.location.pathname}
-console.log(global)
 
 // Endpoints
 const popularMoviesURL = "https://api.themoviedb.org/3/movie/popular?language=da-DK&page=1";
@@ -30,7 +30,6 @@ const fetchPopularMovies = async () => {
     const movies = data.results;
     const backdrop = imageBaseUrlOriginal + data.results[Math.floor(Math.random() * 20)].backdrop_path
     body.style.backgroundImage = `url(${backdrop})`;
-    console.log(movies)
     renderMovieCard(popularMovies, movies)  
 }
 
@@ -47,7 +46,6 @@ const fetchPopularTvShows = async () => {
     const movies = data.results;
     const backdrop = imageBaseUrlOriginal + data.results[Math.floor(Math.random() * 20)].backdrop_path
     body.style.backgroundImage = `url(${backdrop})`;
-    console.log(movies)
     renderTvCard(popularMovies, movies)  
 }
 
