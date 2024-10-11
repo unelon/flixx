@@ -1,4 +1,5 @@
-export const renderMovieCard = (domSelector, movie) => {
+export const renderMovieCard = (domSelector, movies) => {
+    console.log(movies);
     const movieCard = ({ title, release_date, poster_path, id }) => {
         const posterUrl = poster_path
             ? `https://image.tmdb.org/t/p/original/${poster_path}`
@@ -24,7 +25,7 @@ export const renderMovieCard = (domSelector, movie) => {
                 </div>
             `);
     };
-    domSelector.innerHTML = movie.map(movie => {
+    domSelector.innerHTML = movies.map(movie => {
         const showMovieCard = movieCard(movie);
         if (movie.poster_path) {
             return (`

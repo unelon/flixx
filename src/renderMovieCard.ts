@@ -5,9 +5,8 @@ interface MovieData {
     id: number;
 }
 
-export const renderMovieCard = (domSelector: HTMLElement, movie: MovieData[]): void => {
-
-   
+export const renderMovieCard = (domSelector: HTMLElement, movies: MovieData[]): void => {
+    console.log(movies)
 
     const movieCard = ({ title, release_date, poster_path, id }: MovieData): string => {
         
@@ -40,7 +39,7 @@ export const renderMovieCard = (domSelector: HTMLElement, movie: MovieData[]): v
     }
 
     
-    domSelector.innerHTML = movie.map(movie => {
+    domSelector.innerHTML = movies.map(movie => {
             const showMovieCard = movieCard(movie);
         
             if (movie.poster_path) {

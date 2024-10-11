@@ -31,10 +31,11 @@ const searchMovie = async () => {
     });
     
     const data = await res.json();
-    console.log(data)
+    console.log(data.results)
 
 
     const filteredResults = data.results.filter(movie => {
+
     const regex = new RegExp(query.replace(/\s+/g, '').replace(/[-_]/g, ''), 'i');
     return regex.test(movie.original_title.replace(/\s+/g, '').replace(/[-_]/g, ''));
 });
