@@ -1,1 +1,0 @@
-const testNumber: number = 122
